@@ -1,7 +1,7 @@
 package br.com.javamon.exception;
 
 /**
- * Abstract exceptions from diferents orm providers 
+ * Abstract exceptions from DAO layer
  * @author Ramon (based on Carlos Tosin tutorial code. Softblue course)
  * @version 1.0
  *

@@ -32,6 +32,15 @@
 	    <artifactId>hibernate-core</artifactId>
 	    <version>5.4.3.Final</version>
 	</dependency>
+	
+		
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>3.0-alpha-1</version>
+	    <scope>provided</scope>
+	</dependency>
     
   </dependencies>
   

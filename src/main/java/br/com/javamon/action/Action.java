@@ -3,6 +3,7 @@ package br.com.javamon.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.javamon.service.ServiceFactory;
 import br.com.javamon.util.HibernateUtil;
 
 /**
@@ -13,6 +14,7 @@ import br.com.javamon.util.HibernateUtil;
  */
 public abstract class Action {
 
+	private ServiceFactory serviceFactory;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
@@ -71,4 +73,14 @@ public abstract class Action {
 	protected HttpServletResponse getResponse(){
 		return response;
 	}
+
+	protected ServiceFactory getServiceFactory() {
+		return serviceFactory;
+	}
+
+	public void setServiceFactory(ServiceFactory serviceFactory) {
+		this.serviceFactory = serviceFactory;
+	}
+	
+	
 }

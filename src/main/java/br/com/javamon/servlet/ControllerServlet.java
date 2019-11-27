@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.javamon.action.Action;
+import br.com.javamon.service.ServiceFactory;
 
 /**
  * This class handles with all request and send to specifics actions
@@ -68,6 +69,7 @@ public class ControllerServlet extends HttpServlet{
 			Action action = (Action) Class.forName(actionClass).newInstance();
 			action.setRequest(request);
 			action.setResponse(response);
+			action.setServiceFactory(ServiceFactory.getInstance());
 			action.runAction();
 			
 		}catch(Exception e){

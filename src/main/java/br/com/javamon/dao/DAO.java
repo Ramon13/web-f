@@ -82,4 +82,9 @@ public abstract class DAO<T> {
 			throw new DAOException(e);
 		}
 	}
+	
+	
+	protected <R> Query<R> createQuery(String hql, Class<R> clasz) throws DAOException{
+		return session.createQuery(hql, clasz);
+	}
 }

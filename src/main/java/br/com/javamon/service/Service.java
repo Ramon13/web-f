@@ -1,5 +1,6 @@
 package br.com.javamon.service;
 
+import br.com.javamon.convert.ConvertFactory;
 import br.com.javamon.dao.DAOFactory;
 
 /**
@@ -11,10 +12,12 @@ public abstract class Service {
 
 	private DAOFactory daoFactory;
 	private ServiceFactory serviceFactory;
+	private ConvertFactory convertFactory;
 	
 	public Service() {
 		daoFactory = DAOFactory.getInstance();
 		serviceFactory = ServiceFactory.getInstance();
+		convertFactory = ConvertFactory.getInstance();
 	}
 	
 	public DAOFactory getDaoFactory() {
@@ -25,4 +28,7 @@ public abstract class Service {
 		return serviceFactory;
 	}
 	
+	public ConvertFactory getConvertFactory() {
+		return convertFactory;
+	}
 }

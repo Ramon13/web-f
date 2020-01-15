@@ -3,6 +3,7 @@ package br.com.javamon.convert;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -39,5 +40,9 @@ public class DateConvert extends Convert {
 	public static String parseLocalDateToString(LocalDate localdate, String datePattern, Locale locale) throws ConvertException{
 		SimpleDateFormat sdf = new SimpleDateFormat(datePattern, locale);
 		return sdf.format(Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant() ) );
+	}
+	
+	public static LocalDate stringToLocalDate(String stringDate, String datePattern){
+		return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(datePattern));
 	}
 }

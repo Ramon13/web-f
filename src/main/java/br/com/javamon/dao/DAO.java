@@ -78,7 +78,7 @@ public abstract class DAO<T> {
 		try{
 			Query<T> query = session.createQuery(hql, clazz);
 			return query.list();
-		}catch(HibernateException e){
+		}catch(Exception e){
 			throw new DAOException(e);
 		}
 	}

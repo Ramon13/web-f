@@ -35,7 +35,7 @@ public abstract class Action {
 			HibernateUtil.commitTransaction();
 		}catch(Exception e){
 			HibernateUtil.rollbackTransaction();
-			throw e;
+			throw new Exception(e);
 		}
 	}
 	
@@ -82,5 +82,7 @@ public abstract class Action {
 		this.serviceFactory = serviceFactory;
 	}
 	
-	
+	public void putInSession(String arg, Object obj){
+		getRequest().getSession().setAttribute(arg, obj);
+	}
 }

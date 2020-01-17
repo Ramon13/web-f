@@ -8,11 +8,15 @@ public class StringValidator extends Validator{
 		return str1.equalsIgnoreCase(str2);
 	}
 
-	public static boolean isValidLen(String str, int maxLen){
+	public static boolean isValidLen(int maxLen, String str){
 		return str.length() <= maxLen;
 	}
 	
 	public static boolean isEmpty(String str){
-		return StringUtils.isEmpty(str);
+		return StringUtils.isBlank(str);
+	}
+	
+	public static boolean containsZeros(String str){
+		return str.equals("0");
 	}
 }

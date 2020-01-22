@@ -23,4 +23,12 @@ public class StringConvert extends Convert {
 			throw new ConvertException(e);
 		}
 	}
+	
+	public static Integer stringToInteger(String str) throws ConvertException{
+		try {
+			return Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			throw new ConvertException(e);
+		}
+	}
 }

@@ -1,4 +1,4 @@
-package br.com.javamon.validatior;
+package br.com.javamon.validation;
 
 import br.com.javamon.dao.DAOFactory;
 import br.com.javamon.service.ServiceFactory;

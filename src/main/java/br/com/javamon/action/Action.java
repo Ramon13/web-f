@@ -1,5 +1,7 @@
 package br.com.javamon.action;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -84,5 +86,11 @@ public abstract class Action {
 	
 	public void putInSession(String arg, Object obj){
 		getRequest().getSession().setAttribute(arg, obj);
+	}
+	
+	public void responseToClient(int statusCode, String msg) throws IOException{
+		getResponse().setStatus(statusCode);
+		getResponse().setCharacterEncoding("UTF-8");
+		getResponse().getWriter().print(msg);
 	}
 }

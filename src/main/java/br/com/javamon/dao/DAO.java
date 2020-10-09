@@ -1,13 +1,21 @@
 package br.com.javamon.dao;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.*;
+import javax.sql.rowset.serial.SerialBlob;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import br.com.javamon.exception.DAOException;
 import br.com.javamon.util.HibernateUtil;
+import br.com.javamon.validation.StringValidator;
 
 /**
  * This class provides abstract common methods to deal with database operations
@@ -36,7 +44,7 @@ public abstract class DAO<T> {
 	 */
 	public T load(Serializable id) throws DAOException{
 		try {
-			return (T) session.load(clazz, id);
+			return (T) session.get(clazz, id);
 		} catch (HibernateException e) {
 			throw new DAOException(e);
 		}
@@ -47,9 +55,9 @@ public abstract class DAO<T> {
 	 * @param obj the object to be persisted in database
 	 * @throws DAOException wrap the hibernates's exceptions
 	 */
-	public void save(T obj) throws DAOException{
+	public Serializable save(T obj) throws DAOException{
 		try{
-			session.save(obj);
+			return session.save(obj);
 		}catch(HibernateException e){
 			throw new DAOException(e);
 		}
@@ -79,6 +87,14 @@ public abstract class DAO<T> {
 			Query<T> query = session.createQuery(hql, clazz);
 			return query.list();
 		}catch(Exception e){
+			throw new DAOException(e);
+		}
+	}
+	
+	public void update(T obj) throws DAOException{
+		try {
+			session.update(obj);
+		}catch(Exception e) {
 			throw new DAOException(e);
 		}
 	}

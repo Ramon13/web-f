@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Locale;
 
@@ -37,12 +38,17 @@ public class DateConvert extends Convert {
 	 * @return the date formated according locale and pattern
 	 * @throws ConvertException
 	 */
-	public static String parseLocalDateToString(LocalDate localdate, String datePattern, Locale locale) throws ConvertException{
+	public static String parseLocalDateToString(LocalDate localdate, String datePattern, Locale locale) 
+			throws ConvertException{
 		SimpleDateFormat sdf = new SimpleDateFormat(datePattern, locale);
-		return sdf.format(Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant() ) );
+		return sdf.format(Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant() ) );		
 	}
 	
-	public static LocalDate stringToLocalDate(String stringDate, String datePattern){
-		return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(datePattern));
+	public static LocalDate stringToLocalDate(String stringDate, String datePattern) throws ConvertException{
+		try {
+			return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(datePattern));
+		} catch (DateTimeParseException e) {
+			throw new ConvertException(e);
+		}
 	}
 }

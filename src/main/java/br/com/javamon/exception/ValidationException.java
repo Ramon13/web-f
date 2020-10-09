@@ -6,24 +6,24 @@ package br.com.javamon.exception;
  * @version 1.0
  *
  */
-public class ValidatorException extends Exception {
+public class ValidationException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ValidatorException(){};
+	public ValidationException(){};
 	
-	public ValidatorException(Throwable throwable) {
+	public ValidationException(Throwable throwable) {
 		super(throwable);
 	}
 	
-	public ValidatorException(String msg, Throwable throwable) {
+	public ValidationException(String msg, Throwable throwable) {
 		super(msg, throwable);
 	}
 	
-	public ValidatorException(String msg) {
+	public ValidationException(String msg) {
 		super(msg);
 	}
 }

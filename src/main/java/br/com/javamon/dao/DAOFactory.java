@@ -1,5 +1,7 @@
 package br.com.javamon.dao;
 
+import java.lang.reflect.InvocationTargetException;
+
 import br.com.javamon.exception.DAOException;
 
 /**
@@ -33,8 +35,8 @@ public class DAOFactory {
 	 */
 	public <T extends DAO<?>> T getDAO(Class<T> clazz) throws DAOException{
 		try {
-			return clazz.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+			return clazz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException |NoSuchMethodException e) {
 			throw new DAOException(e);
 		}
 	}

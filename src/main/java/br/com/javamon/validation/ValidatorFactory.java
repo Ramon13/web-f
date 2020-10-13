@@ -1,5 +1,7 @@
 package br.com.javamon.validation;
 
+import java.lang.reflect.InvocationTargetException;
+
 import br.com.javamon.exception.ValidatorException;
 
 /**
@@ -32,8 +34,8 @@ public class ValidatorFactory {
 	 */
 	public <T extends ValidatorFactory> T getValidator(Class<T> clazz) throws ValidatorException{
 		try {
-			return clazz.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+			return clazz.getDeclaredConstructor().newInstance();
+		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
 			throw new ValidatorException(e);
 		}
 	}

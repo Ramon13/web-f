@@ -1,5 +1,7 @@
 package br.com.javamon.service;
 
+import java.lang.reflect.InvocationTargetException;
+
 import br.com.javamon.exception.ServiceException;
 
 /**
@@ -32,8 +34,8 @@ public class ServiceFactory {
 	 */
 	public <T extends Service> T getService(Class<T> clazz) throws ServiceException{
 		try {
-			return clazz.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+			return clazz.getDeclaredConstructor().newInstance();
+		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
 			throw new ServiceException(e);
 		}
 	}

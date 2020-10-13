@@ -1,7 +1,8 @@
 package br.com.javamon.convert;
 
 /**
- * Super abstract class. Provides common factories to use in convert classes  
+ * Super abstract class. Provides common factories to use in convert classes
+ * 
  * @author Ramon
  * @version 1.0
  */
@@ -20,5 +21,5 @@ public abstract class Convert {
 	public void setConvertFactory(ConvertFactory convertFactory) {
 		this.convertFactory = convertFactory;
 	}
-	
+
 }

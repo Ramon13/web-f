@@ -1,13 +1,7 @@
 package br.com.javamon.dao;
 
 import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.sql.Blob;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.rowset.serial.SerialBlob;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -15,7 +9,6 @@ import org.hibernate.query.Query;
 
 import br.com.javamon.exception.DAOException;
 import br.com.javamon.util.HibernateUtil;
-import br.com.javamon.validation.StringValidator;
 
 /**
  * This class provides abstract common methods to deal with database operations

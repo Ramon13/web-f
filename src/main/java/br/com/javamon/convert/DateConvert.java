@@ -45,6 +45,12 @@ public class DateConvert extends Convert {
 		SimpleDateFormat sdf = new SimpleDateFormat(datePattern, locale);
 		return sdf.format(Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 	}
+	
+	public static String parseLocalDateToString(LocalDate localdate, String datePattern)
+			throws ConvertException {
+		SimpleDateFormat sdf = new SimpleDateFormat(datePattern);
+		return sdf.format(Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+	}
 
 	public static LocalDate stringToLocalDate(String stringDate, String datePattern) throws ConvertException {
 		try {
@@ -52,5 +58,15 @@ public class DateConvert extends Convert {
 		} catch (DateTimeParseException e) {
 			throw new ConvertException(e);
 		}
+	}
+	
+	public static boolean isValidDate(String stringDate, String datePattern) {
+		try {
+			LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(datePattern));
+		} catch (Exception e) {
+			return false;
+		}
+		
+		return true;
 	}
 }

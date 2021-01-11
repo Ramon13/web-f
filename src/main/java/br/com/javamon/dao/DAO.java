@@ -86,7 +86,7 @@ public abstract class DAO<T> {
 	
 	public void update(T obj) throws DAOException{
 		try {
-			session.update(obj);
+			session.merge(obj);
 		}catch(Exception e) {
 			throw new DAOException(e);
 		}

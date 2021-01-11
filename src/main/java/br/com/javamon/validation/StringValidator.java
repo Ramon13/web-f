@@ -63,8 +63,7 @@ public class StringValidator extends Validator{
 	public static boolean isValidLongParse(String str){
 		try {
 			Long.parseLong(str);
-		}catch(NumberFormatException ex) {
-			ex.printStackTrace();
+		}catch(Exception ex) {
 			return false;
 		}
 		return true;
@@ -73,7 +72,7 @@ public class StringValidator extends Validator{
 	public static boolean isValidIntegerParse(String str) {
 		try {
 			Integer.parseInt(str);
-		}catch(NumberFormatException ex) {
+		}catch(Exception ex) {
 			return false;
 		}
 		return true;

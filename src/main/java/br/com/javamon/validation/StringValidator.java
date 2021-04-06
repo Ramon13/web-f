@@ -52,6 +52,11 @@ public class StringValidator extends Validator{
 		return str.length() <= maxLen;
 	}
 	
+	public static boolean isValidLen(int min, int max, String str){
+		str = str.trim();
+		return str.length() >= min && str.length() <= max; 
+	}
+	
 	public static boolean isEmpty(String str){
 		return StringUtils.isBlank(str);
 	}
